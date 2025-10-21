@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #6366f1;
+  --secondary: #ec4899;
+}
+
+.text-primary { color: var(--primary); }
+.bg-primary { background-color: var(--primary); }
+.hover\:bg-primary\/90:hover { background-color: rgba(99, 102, 241, 0.9); }
+.text-secondary { color: var(--secondary); }
