@@ -1,18 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { HiMail, HiChatAlt, HiPaperAirplane } from "react-icons/hi";
 import { FaWhatsapp } from "react-icons/fa";
-import { useTheme } from "@/context/ThemeContext";
+import { motion } from "framer-motion";
+import Container from "@/components/Container";
 import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
-  const { colors } = useTheme();
-  const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", project: "" });
-
-  useEffect(() => setIsVisible(true), []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -43,118 +40,169 @@ const ContactSection = () => {
       title: "Email",
       data: "chandrasekaranmca06@gmail.com",
       link: "mailto:chandrasekaranmca06@gmail.com",
-      color: colors.primary,
-      gradient: colors.gradient.primary,
+      color: "#6366f1",
     },
     {
       icon: <FaWhatsapp />,
       title: "WhatsApp",
-      data: "6385555688",
+      data: "+91 6385555688",
       link: "https://wa.me/6385555688",
       color: "#25D366",
-      gradient: "linear-gradient(135deg, #25D366 0%, #128C7E 100%)",
     },
     {
       icon: <HiChatAlt />,
       title: "Messenger",
-      data: "6385555688",
+      data: "Let's Connect",
       link: "https://web.whatsapp.com/",
       color: "#0084ff",
-      gradient: "linear-gradient(135deg, #0084ff 0%, #0066cc 100%)",
     },
   ];
 
   return (
-    <section
-      id="contact"
-      className="py-24 md:py-36 relative overflow-hidden"
-      style={{ background: colors.gradient.background }}
-    >
-      <div className="max-w-6xl mx-auto px-6">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
-          <h2 className="text-4xl md:text-5xl font-bold mb-3" style={{ color: colors.text }}>
-            Get In Touch
+    <section id="contact" className="py-12 sm:py-16 lg:py-20">
+      <Container>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-8 sm:mb-12 lg:mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+            <span className="text-gray-900 dark:text-white">Get In </span>
+            <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+              Touch
+            </span>
           </h2>
-          <p className="text-lg" style={{ color: colors.textSecondary }}>
-            Contact Me
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300">
+            Let's work together on your next project
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Contact Cards */}
-          <div className="flex flex-col gap-6">
+          <div className="space-y-4 sm:space-y-6">
+            <motion.h3
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6"
+            >
+              Talk to me
+            </motion.h3>
+            
             {contactCards.map((card, i) => (
-              <a
+              <motion.a
                 key={i}
                 href={card.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative flex items-center p-6 rounded-2xl shadow-lg transform transition-all hover:-translate-y-2 hover:scale-105"
-                style={{
-                  background: colors.gradient.card,
-                  border: `1px solid ${card.color}30`,
-                  boxShadow: `0 8px 25px ${card.color}20`,
-                }}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02, y: -4 }}
+                className="flex items-center p-4 sm:p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-300 group"
               >
-                <div className="flex-shrink-0 w-14 h-14 rounded-lg flex items-center justify-center text-2xl"
-                     style={{ background: `${card.color}20`, color: card.color }}>
+                <div 
+                  className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl transition-transform group-hover:scale-110"
+                  style={{ backgroundColor: `${card.color}20`, color: card.color }}
+                >
                   {card.icon}
                 </div>
                 <div className="ml-4 flex-1">
-                  <h4 className="font-semibold" style={{ color: colors.text }}>{card.title}</h4>
-                  <p className="text-sm" style={{ color: colors.textSecondary }}>{card.data}</p>
+                  <h4 className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base">
+                    {card.title}
+                  </h4>
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                    {card.data}
+                  </p>
                 </div>
-                <div className="ml-4 text-sm font-medium text-white px-4 py-2 rounded-full"
-                     style={{ background: card.color }}>
+                <div 
+                  className="ml-4 text-xs sm:text-sm font-medium text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full transition-transform group-hover:scale-105"
+                  style={{ backgroundColor: card.color }}
+                >
                   Write Me
                 </div>
-              </a>
+              </motion.a>
             ))}
           </div>
 
           {/* Contact Form */}
-          <form
-            onSubmit={handleSubmit}
-            className="bg-white/10 backdrop-blur-lg p-8 rounded-3xl shadow-2xl flex flex-col gap-6"
-            style={{ background: colors.gradient.card }}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="p-4 rounded-xl border border-gray-300/20 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="p-4 rounded-xl border border-gray-300/20 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-            <textarea
-              name="project"
-              placeholder="Your Project"
-              value={formData.project}
-              onChange={handleChange}
-              required
-              rows={5}
-              className="p-4 rounded-xl border border-gray-300/20 bg-transparent focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-            />
-            <button
-              type="submit"
-              disabled={loading}
-              className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:scale-105 transition-transform"
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6">
+              Write me your project
+            </h3>
+            
+            <form
+              onSubmit={handleSubmit}
+              className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-gray-200/20 dark:border-gray-700/20 space-y-4 sm:space-y-6"
             >
-              Send Message <HiPaperAirplane className="text-lg" />
-            </button>
-          </form>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Insert your name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-300/20 dark:border-gray-600/20 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Insert your email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-300/20 dark:border-gray-600/20 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Project
+                </label>
+                <textarea
+                  name="project"
+                  placeholder="Write your project details"
+                  value={formData.project}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-300/20 dark:border-gray-600/20 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none transition-all duration-300"
+                />
+              </div>
+              
+              <motion.button
+                type="submit"
+                disabled={loading}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium rounded-xl shadow-lg hover:shadow-primary-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {loading ? "Sending..." : "Send Message"}
+                <HiPaperAirplane className="w-4 h-4 sm:w-5 sm:h-5" />
+              </motion.button>
+            </form>
+          </motion.div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 };

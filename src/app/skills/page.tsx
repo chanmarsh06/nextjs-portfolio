@@ -82,7 +82,7 @@ const SkillCard = ({ title, skills }) => (
 
 export default function Skills() {
   return (
-    <section className="py-16 px-6 bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-black">
+    <section className="py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-primary mb-12">My Skills</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">

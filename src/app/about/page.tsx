@@ -2,121 +2,157 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import {  HiTrophy, HiFolderOpen, HiFaceSmile } from 'react-icons/hi2';
+import { HiTrophy, HiFolderOpen, HiFaceSmile } from 'react-icons/hi2';
 import { HiDownload } from 'react-icons/hi';
+import Container from '@/components/Container';
 import profilePic from '@/assets/chan.png';
-import CV from '@/assets/Chandrasekaran_React_Resume.pdf'; // ✅ Correct PDF import
+import CV from '@/assets/Chandrasekaran_React_Resume.pdf';
 
 export default function About() {
   const infoData = [
-    { icon: <HiTrophy className="text-3xl text-pink-500" />, title: 'Experience', subtitle: '2.6+ Years Working' },
-    { icon: <HiFolderOpen className="text-3xl text-teal-400" />, title: 'Completed', subtitle: '25+ Projects' },
-    { icon: <HiFaceSmile className="text-3xl text-blue-400" />, title: 'Support', subtitle: 'Online 24/7' },
+    { icon: <HiTrophy className="text-xl sm:text-2xl lg:text-3xl text-primary-500" />, title: 'Experience', subtitle: '3+ Years' },
+    { icon: <HiFolderOpen className="text-xl sm:text-2xl lg:text-3xl text-secondary-500" />, title: 'Projects', subtitle: '50+ Done' },
+    { icon: <HiFaceSmile className="text-xl sm:text-2xl lg:text-3xl text-accent-500" />, title: 'Support', subtitle: '24/7 Online' },
   ];
 
   return (
-    <section
-      id="about"
-      className="relative flex flex-col lg:flex-row items-center justify-center gap-12 py-24 px-6
-      bg-gradient-to-b from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-950 dark:to-black overflow-hidden"
-    >
-      {/* === ANIMATED BACKGROUND EFFECT === */}
-      <div className="absolute inset-0 bg-gradient-to-t from-pink-500/5 via-transparent to-blue-500/5 blur-3xl opacity-40 -z-10" />
+    <section id="about" className="py-12 sm:py-16 lg:py-20">
+      <Container>
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
+          {/* Image Section - Mobile First */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative flex justify-center order-1 lg:order-1"
+          >
+            <div className="relative group">
+              {/* Animated gradient ring - Responsive */}
+              <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full flex items-center justify-center p-0.5 sm:p-1 bg-gradient-to-tr from-primary-500 via-secondary-500 to-accent-500 animate-spin-slow">
+                <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 overflow-hidden flex items-center justify-center">
+                  <Image
+                    src={profilePic}
+                    alt="Chan"
+                    width={300}
+                    height={300}
+                    className="rounded-full object-cover transition-transform duration-500 group-hover:scale-105 shadow-xl sm:shadow-2xl"
+                    priority
+                    sizes="(max-width: 640px) 256px, (max-width: 1024px) 288px, 320px"
+                  />
+                </div>
+              </div>
+              
+              {/* Floating elements - Responsive */}
+              <motion.div
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 3, repeat: Infinity }}
+                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-primary-400/20 rounded-full blur-xl"
+              />
+              <motion.div
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 4, repeat: Infinity }}
+                className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-secondary-400/20 rounded-full blur-xl"
+              />
+            </div>
+          </motion.div>
 
-      {/* === IMAGE SECTION === */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.9, ease: 'easeOut' }}
-        viewport={{ once: true }}
-        className="relative group"
-      >
-        {/* Animated gradient ring */}
-        <div className="relative w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-full flex items-center justify-center p-[4px] bg-gradient-to-tr from-pink-500 via-purple-500 to-blue-500 animate-gradient-border">
-          <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 overflow-hidden flex items-center justify-center">
-            <Image
-              src={profilePic}
-              alt="Chan"
-              width={300}
-              height={300}
-              className="rounded-full object-cover transition-transform duration-500 group-hover:scale-105 shadow-2xl"
-              priority
-            />
-          </div>
-        </div>
-      </motion.div>
+          {/* Content Section - Mobile Optimized */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="order-2 lg:order-2 space-y-6 sm:space-y-8 text-center lg:text-left"
+          >
+            {/* Headings - Responsive Typography */}
+            <div className="space-y-2 sm:space-y-4">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold"
+              >
+                <span className="text-gray-900 dark:text-white">About </span>
+                <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+                  Me
+                </span>
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-base sm:text-lg text-gray-600 dark:text-gray-300"
+              >
+                My Introduction
+              </motion.p>
+            </div>
 
-      {/* === CONTENT SECTION === */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: 'easeOut' }}
-        viewport={{ once: true }}
-        className="flex flex-col items-center lg:items-start max-w-2xl text-center lg:text-left"
-      >
-        {/* Headings */}
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-          About Me
-        </h2>
-        <p className="text-gray-600 dark:text-gray-300 mb-10 text-lg italic">
-          My Introduction
-        </p>
-
-        {/* Info Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-          {infoData.map((item, i) => (
+            {/* Info Cards - Responsive Grid */}
             <motion.div
-              key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.15, duration: 0.5 }}
+              transition={{ delay: 0.4 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center justify-center bg-white/30 dark:bg-gray-800/40 
-              backdrop-blur-md rounded-2xl shadow-md p-6 hover:scale-105 hover:shadow-xl transition-transform"
+              className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-6"
             >
-              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 mb-3">
-                {item.icon}
-              </div>
-              <h3 className="text-base font-semibold text-gray-800 dark:text-gray-100">{item.title}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{item.subtitle}</p>
+              {infoData.map((item, i) => (
+                <motion.div
+                  key={i}
+                  whileHover={{ scale: 1.05 }}
+                  className="flex flex-col items-center justify-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 border border-gray-200/20 dark:border-gray-700/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-300"
+                >
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/50 dark:to-secondary-900/50 mb-2 sm:mb-3">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-800 dark:text-gray-100 mb-1">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center leading-tight">
+                    {item.subtitle}
+                  </p>
+                </motion.div>
+              ))}
             </motion.div>
-          ))}
+
+            {/* Description - Mobile Optimized */}
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              viewport={{ once: true }}
+              className="text-sm sm:text-base lg:text-lg text-gray-700 dark:text-gray-300 leading-relaxed"
+            >
+              Frontend Developer with <span className="text-primary-600 font-semibold">3+ years</span> of experience
+              building scalable web applications using{' '}
+              <span className="text-primary-600 font-semibold">React.js</span>,{' '}
+              <span className="text-secondary-600 font-semibold">Next.js</span>, and{' '}
+              <span className="text-accent-600 font-semibold">Tailwind CSS</span>. 
+              Passionate about creating exceptional user experiences.
+            </motion.p>
+
+            {/* Download Button - Touch Friendly */}
+            <motion.a
+              href={CV}
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium shadow-lg hover:shadow-primary-500/25 transition-all duration-300 text-sm sm:text-base"
+            >
+              <HiDownload className="text-base sm:text-xl" />
+              Download CV
+            </motion.a>
+          </motion.div>
         </div>
-
-        {/* Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-gray-700 dark:text-gray-300 leading-relaxed mb-8 text-[1.05rem]"
-        >
-          Frontend Developer with <span className="text-pink-500 font-semibold">2.6+ years</span> of experience
-          building scalable, high-performance web applications using{' '}
-          <span className="text-blue-500 font-semibold">React.js</span>,{' '}
-          <span className="text-indigo-500 font-semibold">Next.js</span>, and{' '}
-          <span className="text-teal-500 font-semibold">Tailwind CSS</span>. I specialize in crafting reusable,
-          performant UIs with animation and interactivity. Currently expanding into full-stack development using{' '}
-          <span className="text-purple-500 font-semibold">Node.js</span> and{' '}
-          <span className="text-green-500 font-semibold">MongoDB</span>.
-        </motion.p>
-
-        {/* Download Button */}
-        <motion.a
-          href={CV}
-          target="_blank"
-          rel="noopener noreferrer"
-          download
-          whileHover={{ scale: 1.07 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center gap-3 px-7 py-3 rounded-full 
-          bg-gradient-to-r from-pink-500 via-orange-400 to-yellow-400 text-white font-medium shadow-md 
-          hover:shadow-xl transition-all"
-        >
-          <HiDownload className="text-xl" />
-          Download CV
-        </motion.a>
-      </motion.div>
+      </Container>
     </section>
   );
 }

@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import AnimatedBackground from '../components/AnimatedBackground';
 import { ThemeProvider } from '../context/ThemeContext';
 import '../styles/globals.css';
 
@@ -11,10 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <body className="text-gray-900 dark:text-gray-100 transition-colors duration-300">
         <ThemeProvider>
+          <AnimatedBackground />
           <Header />
-          <main className="pt-24">{children}</main>
+          <main className="relative z-10">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
