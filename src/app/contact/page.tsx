@@ -75,7 +75,7 @@ const ContactSection = () => {
             </span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300">
-            Let's work together on your next project
+            Let&apos;s work together on your next project
           </p>
         </motion.div>
 
@@ -102,8 +102,8 @@ const ContactSection = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02, y: -4 }}
-                className="flex items-center p-4 sm:p-6 rounded-2xl bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-300 group"
+                whileHover={{ scale: 1.04, y: -6 }}
+                className="flex items-center p-4 sm:p-6 card card-glass card-hover rounded-2xl transition-all duration-300 group"
               >
                 <div 
                   className="flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center text-xl sm:text-2xl transition-transform group-hover:scale-110"
@@ -142,7 +142,7 @@ const ContactSection = () => {
             
             <form
               onSubmit={handleSubmit}
-              className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-gray-200/20 dark:border-gray-700/20 space-y-4 sm:space-y-6"
+              className="card-glass p-6 sm:p-8 rounded-2xl space-y-4 sm:space-y-6"
             >
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -155,7 +155,7 @@ const ContactSection = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-300/20 dark:border-gray-600/20 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-200/40 dark:border-slate-700/40 bg-white/80 dark:bg-slate-800/80 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
                 />
               </div>
               
@@ -170,7 +170,7 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-300/20 dark:border-gray-600/20 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
+                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-200/40 dark:border-slate-700/40 bg-white/80 dark:bg-slate-800/80 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300"
                 />
               </div>
               
@@ -185,7 +185,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-300/20 dark:border-gray-600/20 bg-white/50 dark:bg-gray-700/50 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none transition-all duration-300"
+                  className="w-full p-3 sm:p-4 rounded-xl border border-gray-200/40 dark:border-slate-700/40 bg-white/80 dark:bg-slate-800/80 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent resize-none transition-all duration-300"
                 />
               </div>
               
@@ -194,7 +194,7 @@ const ContactSection = () => {
                 disabled={loading}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-2 px-6 py-3 sm:py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium rounded-xl shadow-lg hover:shadow-primary-500/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex items-center justify-center gap-2 px-6 py-3 sm:py-4 gradient-primary-btn rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {loading ? "Sending..." : "Send Message"}
                 <HiPaperAirplane className="w-4 h-4 sm:w-5 sm:h-5" />

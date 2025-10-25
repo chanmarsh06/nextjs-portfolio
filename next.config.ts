@@ -1,12 +1,11 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  reactStrictMode: true, // optional
+  reactStrictMode: true,
   images: {
-    domains: ['via.placeholder.com'], // ✅ external image domains
+    domains: ['via.placeholder.com'],
   },
   webpack(config) {
-    // For PDF support
     config.module.rules.push({
       test: /\.pdf$/,
       type: 'asset/resource',

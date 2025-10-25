@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import Container from "@/components/Container";
 import { Data } from "./Data";
@@ -104,7 +102,7 @@ export default function TestimonialSection() {
 
                   {/* Testimonial Text */}
                   <p className="italic text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed flex-1">
-                    "{item.description}"
+                    &quot;{item.description}&quot;
                   </p>
                 </motion.div>
               </SwiperSlide>

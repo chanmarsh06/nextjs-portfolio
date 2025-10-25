@@ -3,23 +3,21 @@ import { useEffect, useState } from 'react';
 import Particles from 'react-tsparticles';
 import { loadSlim } from 'tsparticles-slim';
 import type { Engine } from 'tsparticles-engine';
+import { useTheme } from '../context/ThemeContext';
 
 export default function ParticleBackground() {
-  const [isDark, setIsDark] = useState(false);
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const checkTheme = () => {
-      setIsDark(document.documentElement.classList.contains('dark'));
-    };
-    
-    checkTheme();
-    const observer = new MutationObserver(checkTheme);
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-    
-    return () => observer.disconnect();
+    setMounted(true);
   }, []);
 
+  if (!mounted) return null;
+
   const particlesInit = async (main: Engine) => { await loadSlim(main); };
+
+  const isDark = theme === 'dark';
 
   return (
     <Particles

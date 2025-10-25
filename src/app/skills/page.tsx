@@ -8,7 +8,6 @@ import {
   SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiJsonwebtokens, SiPython, SiGit, SiFirebase, SiPostman
 } from 'react-icons/si';
 import { FaAws, FaDocker, FaGitAlt } from 'react-icons/fa';
-import { MdOutlineCode } from 'react-icons/md';
 
 const frontendSkills = [
   { name: 'HTML5', level: 90, color: '#e34c26', icon: <SiHtml5 color="#e34c26" /> },
@@ -47,7 +46,19 @@ const technologiesAndTools = [
   { name: 'Postman', color: '#FF6C37', icon: <SiPostman color="#FF6C37" /> },
 ];
 
-const SkillCard = ({ title, skills }) => (
+interface Skill {
+  name: string;
+  level: number;
+  color: string;
+  icon: React.ReactNode;
+}
+
+interface SkillCardProps {
+  title: string;
+  skills: Skill[];
+}
+
+const SkillCard = ({ title, skills }: SkillCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}

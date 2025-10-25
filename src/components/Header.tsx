@@ -31,7 +31,7 @@ export default function Header() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg border-b border-gray-200/20 dark:border-gray-700/20'
+          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-elevated border-b border-gray-200/30 dark:border-slate-700/30'
           : 'bg-transparent'
       }`}
     >
@@ -58,7 +58,7 @@ export default function Header() {
               >
                 <Link
                   href={link.href}
-                  className="relative text-sm lg:text-base text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300 group px-2 py-1"
+                  className="relative text-sm lg:text-base text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300 group px-2 py-1"
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 group-hover:w-full transition-all duration-300" />
@@ -74,7 +74,7 @@ export default function Header() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300"
+              className="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200 transition-colors duration-300"
             >
               {menuOpen ? <HiX size={20} /> : <HiMenu size={20} />}
             </motion.button>
@@ -88,7 +88,7 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden pb-4 border-t border-gray-200/20 dark:border-gray-700/20 mt-2"
+              className="md:hidden pb-4 border-t border-gray-200/30 dark:border-slate-700/30 mt-2"
             >
               <div className="pt-4 space-y-2">
                 {links.map((link, index) => (
@@ -101,7 +101,7 @@ export default function Header() {
                     <Link
                       href={link.href}
                       onClick={() => setMenuOpen(false)}
-                      className="block py-3 px-4 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 rounded-lg font-medium transition-all duration-300"
+                      className="block py-3 px-4 text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-slate-800/50 rounded-lg font-medium transition-all duration-300"
                     >
                       {link.name}
                     </Link>

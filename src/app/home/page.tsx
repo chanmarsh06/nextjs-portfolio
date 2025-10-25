@@ -43,7 +43,7 @@ export default function Home() {
                 transition={{ delay: 0.3 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
               >
-                <span className="text-gray-900 dark:text-white">Hi, I'm </span>
+                <span className="text-gray-900 dark:text-white">Hi, I&apos;m </span>
                 <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
                   Chan
                 </span>

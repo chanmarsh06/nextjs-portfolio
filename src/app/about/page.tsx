@@ -101,16 +101,16 @@ export default function About() {
               {infoData.map((item, i) => (
                 <motion.div
                   key={i}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex flex-col items-center justify-center bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-6 border border-gray-200/20 dark:border-gray-700/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-300"
+                  whileHover={{ scale: 1.08, y: -5 }}
+                  className="flex flex-col items-center justify-center card card-hover card-glass p-3 sm:p-4 lg:p-6"
                 >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/50 dark:to-secondary-900/50 mb-2 sm:mb-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 flex items-center justify-center rounded-full bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/40 dark:to-secondary-900/40 mb-2 sm:mb-3">
                     {item.icon}
                   </div>
-                  <h3 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-800 dark:text-gray-100 mb-1">
+                  <h3 className="text-xs sm:text-sm lg:text-base font-semibold text-gray-800 dark:text-gray-50 mb-1">
                     {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 text-center leading-tight">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 text-center leading-tight">
                     {item.subtitle}
                   </p>
                 </motion.div>
@@ -145,7 +145,7 @@ export default function About() {
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-medium shadow-lg hover:shadow-primary-500/25 transition-all duration-300 text-sm sm:text-base"
+              className="inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl gradient-primary-btn text-sm sm:text-base"
             >
               <HiDownload className="text-base sm:text-xl" />
               Download CV

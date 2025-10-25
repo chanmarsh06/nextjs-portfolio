@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
-import { HiExternalLink, HiCode } from 'react-icons/hi';
+import { HiExternalLink } from 'react-icons/hi';
 import { FiGithub } from 'react-icons/fi';
 import Container from '@/components/Container';
 
@@ -78,7 +78,7 @@ export default function Portfolio() {
             </span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300">
-            Recent projects I've worked on
+            Recent projects I&apos;ve worked on
           </p>
         </motion.div>
 
@@ -93,7 +93,7 @@ export default function Portfolio() {
               whileHover={{ y: -8 }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="group relative bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-gray-200/20 dark:border-gray-700/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-300"
+              className="group relative card card-glass card-hover rounded-2xl overflow-hidden"
             >
               {/* Project Image */}
               <div className="relative w-full h-48 sm:h-52 lg:h-56 overflow-hidden">

@@ -1,10 +1,20 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { HiArrowRight, HiCheckCircle } from "react-icons/hi";
 import { HiOutlineCode, HiOutlineServer, HiOutlineDocumentText } from "react-icons/hi";
 import { motion } from "framer-motion";
 import Container from "@/components/Container";
+
+interface Service {
+  id: number;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+  features: string[];
+  color: string;
+  gradient: string;
+}
 
 const services = [
   {
@@ -56,9 +66,9 @@ const services = [
 
 export default function Services() {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<any>(null);
+  const [selectedService, setSelectedService] = useState<Service | null>(null);
 
-  const openModal = (service: any) => {
+  const openModal = (service: Service) => {
     setSelectedService(service);
     setModalOpen(true);
   };

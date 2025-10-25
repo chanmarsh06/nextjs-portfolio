@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { HiExternalLink, HiCode } from 'react-icons/hi';
+import { HiExternalLink } from 'react-icons/hi';
 import { FiGithub } from 'react-icons/fi';
 
 interface ProjectCardProps {
