@@ -1,9 +1,14 @@
 'use client';
 
 import React, { useState } from "react";
-import { HiArrowRight, HiCheckCircle } from "react-icons/hi";
-import { HiOutlineCode, HiOutlineServer, HiOutlineDocumentText } from "react-icons/hi";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  HiOutlineCode,
+  HiOutlineServer,
+  HiOutlineDocumentText,
+  HiArrowRight,
+  HiCheckCircle,
+} from "react-icons/hi";
 import Container from "@/components/Container";
 
 interface Service {
@@ -12,176 +17,189 @@ interface Service {
   title: string;
   description: string;
   features: string[];
-  color: string;
   gradient: string;
 }
 
-const services = [
+const services: Service[] = [
   {
     id: 1,
     icon: <HiOutlineCode />,
     title: "Frontend Development",
-    description: "Building scalable, high-performance web applications using React.js, TypeScript, and modern tools.",
+    description:
+      "Performance-optimized, scalable, reusable UI development using React.js & Next.js.",
     features: [
-      "Develop reusable UI components with React.js & MUI",
-      "Optimize rendering and state management with Redux Toolkit",
-      "Integrate RESTful APIs using Axios and RTK Query",
-      "Enhance performance through code-splitting and lazy loading",
-      "Deploy production builds via CI/CD pipelines",
+      "Reusable UI component architecture",
+      "State management using Redux Toolkit / RTK Query",
+      "SEO-optimized pages with Next.js",
+      "Pixel-perfect UI with Tailwind & MUI",
+      "Code-splitting & lazy loading",
     ],
-    color: "#4f46e5",
-    gradient: "from-purple-400 via-pink-500 to-red-500",
+    gradient: "from-primary-500 via-secondary-500 to-accent-500",
   },
   {
     id: 2,
     icon: <HiOutlineServer />,
     title: "MERN Stack Development",
-    description: "Full-stack capabilities with Node.js, Express.js, and MongoDB to deliver dynamic applications.",
+    description:
+      "Full-stack development with Node.js + Express.js + MongoDB. End-to-end API development.",
     features: [
-      "Design RESTful APIs with Express.js and MongoDB",
-      "Implement JWT-based authentication and secure routes",
-      "Build scalable, modular backend architecture",
-      "Integrate frontend with backend seamlessly using Axios",
-      "Deploy full-stack apps on cloud platforms",
+      "JWT authentication and protected routes",
+      "REST APIs, DB modeling & architecture",
+      "Reusable backend services",
+      "Clean file structure & modularization",
+      "Cloud Deployments (Vercel / Render)",
     ],
-    color: "#4ecdc4",
-    gradient: "from-teal-400 to-cyan-600",
+    gradient: "from-secondary-500 to-primary-500",
   },
   {
     id: 3,
     icon: <HiOutlineDocumentText />,
     title: "Project Highlights",
-    description: "Developed multiple real-world applications including HRMS portals and Performance Management Systems.",
+    description:
+      "Built production-ready projects with real clients and enterprise-level teams.",
     features: [
-      "Budgie HRMS Portal – Built role-based dashboards & chatbots",
-      "Template Engines – Created reusable builders reducing dev time by 40%",
-      "PMS Module – Automated multi-level reviews improving efficiency by 35%",
-      "Ullamart E-Commerce – Designed responsive frontend improving UX by 25%",
-      "Implemented RTK Query caching reducing API calls by 35%",
+      "E-commerce application (full MERN)",
+      "Admin dashboards with analytics",
+      "Portfolio builder components",
+      "Performance tracking dashboards",
+      "Reusable UI design system",
     ],
-    color: "#ff6b6b",
-    gradient: "from-red-400 to-yellow-400",
+    gradient: "from-accent-500 to-primary-500",
   },
 ];
 
 export default function Services() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<Service | null>(null);
-
-  const openModal = (service: Service) => {
-    setSelectedService(service);
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-    setSelectedService(null);
-  };
+  const [selected, setSelected] = useState<Service | null>(null);
 
   return (
-    <section id="services" className="py-12 sm:py-16 lg:py-20">
+    <section id="services" className="py-20 relative overflow-hidden">
+      {/* Soft background glows */}
+      <span className="absolute top-10 -left-10 w-64 h-64 blur-[120px] bg-primary-500/20 rounded-full" />
+      <span className="absolute bottom-10 -right-10 w-72 h-72 blur-[140px] bg-secondary-500/20 rounded-full" />
+
       <Container>
+        {/* Title */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
+          <h2 className="text-4xl sm:text-5xl font-extrabold leading-tight">
             <span className="text-gray-900 dark:text-white">What I </span>
             <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-              Do
+              Offer
             </span>
           </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300">
-            MERN Stack Developer | Frontend Specialist | React Enthusiast
+          <p className="text-gray-500 dark:text-gray-300 mt-4 text-base sm:text-lg">
+            Creating impactful digital solutions through clean code & thoughtful design.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
               viewport={{ once: true }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="relative group rounded-2xl p-6 sm:p-8 flex flex-col justify-between h-auto sm:h-80 text-center shadow-lg bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/20 dark:border-gray-700/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-300"
+              whileHover={{ scale: 1.04, y: -4 }}
+              className="relative p-[1px] rounded-3xl bg-gradient-to-r opacity-90 hover:opacity-100 transition-all duration-300 cursor-pointer"
             >
-              <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${service.gradient} rounded-t-2xl`} />
-              
-              <div className="flex flex-col items-center gap-4 sm:gap-6">
-                <div
-                  className="text-3xl sm:text-4xl lg:text-5xl p-3 sm:p-4 lg:p-5 rounded-full shadow-lg transition-transform group-hover:scale-110"
-                  style={{ backgroundColor: `${service.color}15`, color: service.color }}
-                >
-                  {service.icon}
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white">
-                  {service.title}
-                </h3>
-                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
-              
-              <motion.button
-                onClick={() => openModal(service)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="mt-4 sm:mt-6 inline-flex items-center justify-center gap-2 text-sm font-medium text-white bg-gradient-to-r from-primary-600 to-secondary-600 px-4 sm:px-6 py-2 sm:py-3 rounded-xl hover:shadow-lg transition-all duration-300"
+              {/* Gradient border wrapper */}
+              <div
+                className={`rounded-3xl p-6 sm:p-8 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl shadow-xl border border-white/10 hover:border-primary-500/40 transition`}
+                onClick={() => setSelected(service)}
               >
-                View More <HiArrowRight className="w-4 h-4" />
-              </motion.button>
+                <div className="flex flex-col justify-between h-full gap-6 text-center">
+                  {/* Icon */}
+                  <div
+                    className={`mx-auto p-4 rounded-full text-4xl shadow-xl bg-gradient-to-r ${service.gradient} text-white`}
+                  >
+                    {service.icon}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold">{service.title}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-300 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  <motion.button
+                    whileHover={{ x: 6 }}
+                    className="inline-flex justify-center items-center gap-2 text-sm font-medium text-primary-600 dark:text-secondary-400 hover:underline"
+                  >
+                    View Details <HiArrowRight className="w-4 h-4" />
+                  </motion.button>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
+      </Container>
 
-        {/* Modal */}
-        {modalOpen && selectedService && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 sm:p-6">
+      {/* Modal */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+            onClick={() => setSelected(null)}
+          >
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full p-4 sm:p-6 relative shadow-2xl max-h-[90vh] overflow-y-auto"
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.9 }}
+              className="relative bg-white dark:bg-gray-900 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-xl"
+              onClick={(e) => e.stopPropagation()}
             >
+              {/* Close */}
               <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 text-2xl font-bold w-8 h-8 flex items-center justify-center"
+                onClick={() => setSelected(null)}
+                className="absolute top-3 right-4 text-2xl text-gray-400 hover:text-white"
               >
                 ×
               </button>
-              
-              <div className="flex items-center gap-4 mb-4 sm:mb-6">
-                <div
-                  className="p-2 sm:p-3 rounded-full text-xl sm:text-2xl"
-                  style={{ backgroundColor: `${selectedService.color}20`, color: selectedService.color }}
+
+              {/* Header */}
+              <div className="flex items-center gap-3 mb-6">
+                <span
+                  className={`text-3xl p-3 rounded-full bg-gradient-to-r ${selected.gradient} text-white`}
                 >
-                  {selectedService.icon}
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white">
-                  {selectedService.title}
-                </h3>
+                  {selected.icon}
+                </span>
+                <h3 className="text-2xl font-bold">{selected.title}</h3>
               </div>
-              
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 sm:mb-6">
-                {selectedService.description}
+
+              {/* Description */}
+              <p className="text-sm text-gray-500 dark:text-gray-300 mb-4">
+                {selected.description}
               </p>
-              
-              <ul className="space-y-2 sm:space-y-3">
-                {selectedService.features.map((feat: string, idx: number) => (
-                  <li key={idx} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base text-gray-700 dark:text-gray-200">
-                    <HiCheckCircle className="text-green-500 mt-0.5 flex-shrink-0" />
-                    <span>{feat}</span>
-                  </li>
+
+              {/* Features List */}
+              <ul className="space-y-3">
+                {selected.features.map((feat, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.07 }}
+                    className="flex gap-2 text-gray-800 dark:text-gray-200"
+                  >
+                    <HiCheckCircle className="text-primary-500 w-5 h-5 mt-0.5" />
+                    {feat}
+                  </motion.li>
                 ))}
               </ul>
             </motion.div>
-          </div>
+          </motion.div>
         )}
-      </Container>
+      </AnimatePresence>
     </section>
   );
 }

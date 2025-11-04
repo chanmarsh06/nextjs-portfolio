@@ -31,7 +31,7 @@ export default function Header() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-elevated border-b border-gray-200/30 dark:border-slate-700/30'
+          ? 'bg-light-DEFAULT/95 dark:bg-dark-secondary/95 backdrop-blur-xl shadow-elevated border-b border-light-border/30 dark:border-dark-border/30'
           : 'bg-transparent'
       }`}
     >
@@ -41,7 +41,7 @@ export default function Header() {
           <motion.div whileHover={{ scale: 1.05 }}>
             <Link 
               href="#home" 
-              className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent"
+              className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent"
             >
               Chan.dev
             </Link>
@@ -58,10 +58,10 @@ export default function Header() {
               >
                 <Link
                   href={link.href}
-                  className="relative text-sm lg:text-base text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-300 group px-2 py-1"
+                  className="relative text-sm lg:text-base text-light-text dark:text-dark-text hover:text-primary-500 dark:hover:text-primary-400 font-medium transition-colors duration-300 group px-2 py-1"
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-600 to-secondary-600 group-hover:w-full transition-all duration-300" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-secondary-500 group-hover:w-full transition-all duration-300" />
                 </Link>
               </motion.div>
             ))}
@@ -74,7 +74,7 @@ export default function Header() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-slate-800 text-gray-700 dark:text-gray-200 transition-colors duration-300"
+              className="p-2 rounded-lg bg-light-secondary dark:bg-dark-tertiary text-light-text dark:text-dark-text transition-colors duration-300"
             >
               {menuOpen ? <HiX size={20} /> : <HiMenu size={20} />}
             </motion.button>
@@ -88,7 +88,7 @@ export default function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden pb-4 border-t border-gray-200/30 dark:border-slate-700/30 mt-2"
+              className="md:hidden pb-4 border-t border-light-border/30 dark:border-dark-border/30 mt-2"
             >
               <div className="pt-4 space-y-2">
                 {links.map((link, index) => (
@@ -101,7 +101,7 @@ export default function Header() {
                     <Link
                       href={link.href}
                       onClick={() => setMenuOpen(false)}
-                      className="block py-3 px-4 text-gray-700 dark:text-gray-200 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-gray-50 dark:hover:bg-slate-800/50 rounded-lg font-medium transition-all duration-300"
+                      className="block py-3 px-4 text-light-text dark:text-dark-text hover:text-primary-500 dark:hover:text-primary-400 hover:bg-light-secondary dark:hover:bg-dark-secondary/50 rounded-lg font-medium transition-all duration-300"
                     >
                       {link.name}
                     </Link>

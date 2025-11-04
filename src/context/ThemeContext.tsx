@@ -35,62 +35,63 @@ type ThemeContextType = {
 // Modern professional color palette - Light theme
 const lightColors = {
   primary: {
-    main: "#4f46e5",
-    light: "#6366f1",
-    dark: "#4338ca",
+    main: "#667eea",
+    light: "#667eea",
+    dark: "#667eea",
   },
   secondary: {
-    main: "#ec4899",
-    light: "#f472b6",
-    dark: "#be185d",
+    main: "#764ba2",
+    light: "#764ba2",
+    dark: "#764ba2",
   },
   accent: {
-    main: "#06b6d4",
-    light: "#22d3ee",
-    dark: "#0891b2",
+    main: "#667eea",
+    light: "#667eea",
+    dark: "#667eea",
   },
   background: {
     main: "#ffffff",
-    secondary: "#f9fafb",
-    tertiary: "#f3f4f6",
+    secondary: "#f8fafb",
+    tertiary: "#f8fafb",
   },
   text: {
-    primary: "#111827",
-    secondary: "#4b5563",
-    tertiary: "#6b7280",
-    light: "#9ca3af",
+    primary: "#334155",
+    secondary: "#64748b",
+    tertiary: "#94a3b8",
+    light: "#cbd5e1",
   },
   border: {
-    light: "#e5e7eb",
-    main: "#d1d5db",
-    dark: "#9ca3af",
+    light: "#e2e8f0",
+    main: "#cbd5e1",
+    dark: "#94a3b8",
   },
   surface: {
     card: "rgba(255, 255, 255, 0.95)",
     overlay: "rgba(255, 255, 255, 0.8)",
   },
   gradient: {
-    background: "linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%)",
-    card: "rgba(255, 255, 255, 0.9)",
+    primary: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+    card: "rgba(255, 255, 255, 0.95)",
   },
 };
 
 // Modern professional color palette - Dark theme
 const darkColors = {
   primary: {
-    main: "#6366f1",
-    light: "#818cf8",
-    dark: "#4f46e5",
+    main: "#8b5cf6",
+    light: "#a855f7",
+    dark: "#8b5cf6",
   },
   secondary: {
-    main: "#ec4899",
-    light: "#f472b6",
-    dark: "#db2777",
+    main: "#a855f7",
+    light: "#a855f7",
+    dark: "#a855f7",
   },
   accent: {
-    main: "#06b6d4",
-    light: "#22d3ee",
-    dark: "#0891b2",
+    main: "#8b5cf6",
+    light: "#a855f7",
+    dark: "#8b5cf6",
   },
   background: {
     main: "#0f172a",
@@ -98,23 +99,24 @@ const darkColors = {
     tertiary: "#334155",
   },
   text: {
-    primary: "#f9fafb",
-    secondary: "#e2e8f0",
-    tertiary: "#cbd5e1",
-    light: "#94a3b8",
+    primary: "#f1f5f9",
+    secondary: "#94a3b8",
+    tertiary: "#64748b",
+    light: "#475569",
   },
   border: {
-    light: "#475569",
-    main: "#334155",
-    dark: "#1e293b",
+    light: "#334155",
+    main: "#475569",
+    dark: "#64748b",
   },
   surface: {
-    card: "rgba(15, 23, 42, 0.95)",
-    overlay: "rgba(15, 23, 42, 0.85)",
+    card: "rgba(30, 41, 59, 0.95)",
+    overlay: "rgba(15, 23, 42, 0.8)",
   },
   gradient: {
-    background: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
-    card: "rgba(30, 41, 59, 0.9)",
+    primary: "linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%)",
+    background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+    card: "rgba(30, 41, 59, 0.95)",
   },
 };
 

@@ -13,9 +13,9 @@ const ThemeToggle = memo(function ThemeToggle() {
     <MotionConfig reducedMotion="user">
       <motion.button
         onClick={toggleTheme}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
-        className="relative p-3 rounded-xl bg-gray-100 dark:bg-slate-800 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all duration-300 overflow-hidden group shadow-soft dark:shadow-medium focus-visible:focus-visible"
+        className="relative p-3 rounded-xl bg-light-secondary dark:bg-dark-tertiary hover:bg-light-tertiary dark:hover:bg-dark-secondary transition-all duration-300 overflow-hidden group shadow-soft dark:shadow-medium focus-visible:focus-visible"
         title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
         type="button"
@@ -28,7 +28,7 @@ const ThemeToggle = memo(function ThemeToggle() {
               animate={{ rotate: 0, opacity: 1, scale: 1 }}
               exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="text-yellow-400"
+              className="text-yellow-500"
             >
               <FiSun className="w-5 h-5" aria-hidden="true" />
             </motion.div>
@@ -39,14 +39,13 @@ const ThemeToggle = memo(function ThemeToggle() {
               animate={{ rotate: 0, opacity: 1, scale: 1 }}
               exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
-              className="text-gray-700"
+              className="text-primary-500"
             >
               <FiMoon className="w-5 h-5" aria-hidden="true" />
             </motion.div>
           )}
         </AnimatePresence>
         
-        {/* Hover effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-primary-500/20 to-secondary-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </motion.button>
     </MotionConfig>

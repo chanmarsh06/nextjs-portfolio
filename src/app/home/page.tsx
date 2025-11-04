@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { AiFillGithub, AiFillLinkedin, AiOutlineTwitter } from 'react-icons/ai';
 import { HiDownload, HiCode, HiLightningBolt } from 'react-icons/hi';
 import { FiArrowDown } from 'react-icons/fi';
+import { TypeAnimation } from 'react-type-animation';
 import Container from '@/components/Container';
 import profilePic from '@/assets/chan.png';
 
@@ -13,136 +14,159 @@ export default function Home() {
     alert('CV download will be available soon!');
   };
 
+  // Animation presets
+  const fadeUp = (delay = 0) => ({
+    initial: { opacity: 0, y: 24 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, delay, ease: 'easeOut' },
+  });
+
+  const stagger = {
+    animate: { transition: { staggerChildren: 0.08, delayChildren: 0.25 } },
+  };
+
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 sm:pt-20 pb-8">
+    <section id="home" className="min-h-screen flex items-center justify-center pt-16 sm:pt-20 pb-8 relative overflow-hidden">
+      {/* Soft background accents */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-primary-500/10 blur-3xl" />
+        <div className="absolute -bottom-24 -right-24 w-80 h-80 rounded-full bg-secondary-500/10 blur-3xl" />
+      </div>
+
       <Container>
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Content - Mobile First */}
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* ---------- LEFT: CONTENT ---------- */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            variants={stagger}
+            initial="initial"
+            animate="animate"
             className="order-2 lg:order-1 text-center lg:text-left space-y-6 sm:space-y-8"
           >
-            {/* Status Badge */}
+            {/* Availability badge */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-primary-100/80 dark:bg-primary-900/30 rounded-full text-primary-700 dark:text-primary-300 text-xs sm:text-sm font-medium backdrop-blur-sm"
+              {...fadeUp(0)}
+              className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 bg-primary-500/15 dark:bg-primary-500/20 rounded-full text-primary-600 dark:text-primary-400 text-xs sm:text-sm font-medium backdrop-blur-sm border border-primary-500/30"
             >
-              <HiLightningBolt className="w-3 h-3 sm:w-4 sm:h-4" />
+              <HiLightningBolt className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               Available for work
             </motion.div>
 
-            {/* Main Heading - Responsive Typography */}
-            <div className="space-y-2 sm:space-y-4">
+            {/* Headline */}
+            <div className="space-y-3 sm:space-y-4">
               <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight"
+                {...fadeUp(0.05)}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight tracking-tight"
               >
-                <span className="text-gray-900 dark:text-white">Hi, I&apos;m </span>
-                <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+                <span className="text-light-text dark:text-dark-text">Hi, I&apos;m </span>
+                <span className="bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent">
                   Chan
                 </span>
               </motion.h1>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 font-medium"
-              >
-                Full-Stack Developer
-                <span className="text-primary-600 dark:text-primary-400">
-                  {' '}& UI/UX Enthusiast
-                </span>
+              {/* Type Animation: roles */}
+              <motion.div {...fadeUp(0.1)}>
+                <div className="text-base sm:text-lg md:text-xl lg:text-2xl text-light-text-secondary dark:text-dark-text-secondary font-medium">
+                  <TypeAnimation
+                    sequence={[
+                      'Full-Stack Developer', 1600,
+                      'React / Next.js Specialist', 1600,
+                      'UI/UX Enthusiast', 1600,
+                      'Performance-first Engineer', 1600,
+                    ]}
+                    wrapper="span"
+                    speed={38}
+                    repeat={Infinity}
+                    deletionSpeed={60}
+                    cursor={true}
+                    className="inline-block"
+                  />
+                  <span className="sr-only">— rotating roles</span>
+                </div>
               </motion.div>
             </div>
 
-            {/* Description - Mobile Optimized */}
+            {/* Description */}
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+              {...fadeUp(0.15)}
+              className="text-sm sm:text-base lg:text-lg text-light-text-secondary dark:text-dark-text-secondary max-w-xl mx-auto lg:mx-0 leading-relaxed"
             >
-              I craft exceptional digital experiences using modern technologies. 
-              Specializing in React, Next.js, and the MERN stack.
+              I craft exceptional digital experiences using modern technologies.
+              Specializing in <span className="font-semibold text-primary-600 dark:text-primary-400">React</span>,{' '}
+              <span className="font-semibold text-secondary-600 dark:text-secondary-400">Next.js</span>, and the MERN stack.
             </motion.p>
 
-            {/* Stats - Responsive Grid */}
+            {/* Stats */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
+              {...fadeUp(0.2)}
               className="grid grid-cols-3 gap-4 sm:gap-6 py-4 sm:py-6 max-w-sm mx-auto lg:mx-0"
             >
               {[
                 { value: '3+', label: 'Years' },
                 { value: '50+', label: 'Projects' },
-                { value: '100%', label: 'Quality' }
+                { value: '100%', label: 'Quality' },
               ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-primary-600 dark:text-primary-400">
+                <motion.div
+                  key={index}
+                  whileHover={{ y: -3, scale: 1.03 }}
+                  className="text-center"
+                >
+                  <div className="text-lg sm:text-xl lg:text-2xl font-bold text-primary-500 dark:text-primary-400">
                     {stat.value}
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-xs sm:text-sm text-light-text-secondary dark:text-dark-text-secondary">
                     {stat.label}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
 
-            {/* Action Buttons - Mobile Responsive */}
+            {/* CTAs */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
+              {...fadeUp(0.25)}
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
-              <motion.button
+              <motion.a
+                href="#projects"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white rounded-xl sm:rounded-2xl font-medium shadow-lg hover:shadow-primary-500/25 transition-all duration-300 text-sm sm:text-base"
+                className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white rounded-xl sm:rounded-2xl font-medium shadow-lg hover:shadow-xl transition-all duration-300 text-sm sm:text-base"
+                aria-label="View Projects"
               >
                 <HiCode className="w-4 h-4 sm:w-5 sm:h-5" />
                 View Projects
-              </motion.button>
+              </motion.a>
 
               <motion.button
                 onClick={handleDownload}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary-600 text-primary-600 dark:text-primary-400 rounded-xl sm:rounded-2xl font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 text-sm sm:text-base"
+                className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border-2 border-primary-500 text-primary-500 dark:text-primary-400 rounded-xl sm:rounded-2xl font-medium hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300 text-sm sm:text-base"
+                aria-label="Download CV"
               >
                 <HiDownload className="w-4 h-4 sm:w-5 sm:h-5" />
                 Download CV
               </motion.button>
             </motion.div>
 
-            {/* Social Links - Touch Friendly */}
+            {/* Socials */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex gap-3 sm:gap-4 justify-center lg:justify-start pt-4"
+              {...fadeUp(0.3)}
+              className="flex gap-3 sm:gap-4 justify-center lg:justify-start pt-2 sm:pt-4"
             >
               {[
-                { icon: AiFillGithub, href: "https://github.com/", label: "GitHub" },
-                { icon: AiFillLinkedin, href: "https://linkedin.com/", label: "LinkedIn" },
-                { icon: AiOutlineTwitter, href: "https://twitter.com/", label: "Twitter" }
+                { icon: AiFillGithub, href: 'https://github.com/', label: 'GitHub' },
+                { icon: AiFillLinkedin, href: 'https://linkedin.com/', label: 'LinkedIn' },
+                { icon: AiOutlineTwitter, href: 'https://twitter.com/', label: 'Twitter' },
               ].map(({ icon: Icon, href, label }) => (
                 <motion.a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.9 }}
-                  className="p-2.5 sm:p-3 bg-gray-100 dark:bg-gray-800 rounded-lg sm:rounded-xl text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300"
+                  whileHover={{ y: -2, scale: 1.07 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="p-2.5 sm:p-3 bg-light-secondary dark:bg-dark-secondary rounded-lg sm:rounded-xl text-light-text-secondary dark:text-dark-text-secondary hover:text-primary-500 dark:hover:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-all duration-300"
+                  aria-label={label}
                 >
                   <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                 </motion.a>
@@ -150,37 +174,34 @@ export default function Home() {
             </motion.div>
           </motion.div>
 
-          {/* Profile Image - Mobile Optimized */}
+          {/* ---------- RIGHT: PROFILE IMAGE ---------- */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
             className="order-1 lg:order-2 relative flex justify-center"
           >
             <div className="relative">
-              {/* Floating Elements - Responsive */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 lg:w-24 lg:h-24 bg-gradient-to-r from-primary-400 to-secondary-400 rounded-full opacity-20 blur-xl"
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 lg:-bottom-8 lg:-left-8 w-16 h-16 sm:w-20 sm:h-20 lg:w-32 lg:h-32 bg-gradient-to-r from-accent-400 to-primary-400 rounded-full opacity-20 blur-xl"
-              />
+              {/* Ambient blobs */}
+              <div aria-hidden className="absolute -top-4 -right-4 w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-primary-500/25 blur-2xl" />
+              <div aria-hidden className="absolute -bottom-6 -left-6 w-20 h-20 sm:w-32 sm:h-32 rounded-full bg-secondary-500/25 blur-2xl" />
 
-              {/* Main Profile Container - Responsive Sizing */}
+              {/* Photo card (premium) */}
               <motion.div
                 className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96"
                 animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               >
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-500/30 to-secondary-500/30 rounded-full blur-xl sm:blur-2xl animate-pulse-slow" />
+                {/* Soft glow ring */}
+                <div className="absolute inset-0 rounded-[28px] blur-xl bg-gradient-to-r from-primary-500/25 to-secondary-500/25" />
 
-                {/* Profile Image */}
-                <div className="relative w-full h-full rounded-full overflow-hidden border-2 sm:border-4 border-white dark:border-gray-800 shadow-xl sm:shadow-2xl bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/50 dark:to-secondary-900/50">
+                {/* Image frame */}
+                <motion.div
+                  whileHover={{ scale: 1.02, rotateX: 2, rotateY: -2 }}
+                  transition={{ type: 'spring', stiffness: 140, damping: 12 }}
+                  className="relative w-full h-full rounded-[28px] overflow-hidden border border-light-border/70 dark:border-dark-border/60 bg-gradient-to-br from-primary-100 to-secondary-100 dark:from-primary-900/40 dark:to-secondary-900/40 shadow-2xl"
+                  style={{ transformStyle: 'preserve-3d' }}
+                >
                   <Image
                     src={profilePic}
                     alt="Chan - Full Stack Developer"
@@ -189,30 +210,40 @@ export default function Home() {
                     priority
                     sizes="(max-width: 640px) 256px, (max-width: 1024px) 320px, 384px"
                   />
-                </div>
 
-                {/* Decorative Ring - Responsive */}
+                  {/* Subtle shine on hover */}
+                  <motion.span
+                    aria-hidden
+                    initial={{ x: '-120%', opacity: 0 }}
+                    whileHover={{ x: '120%', opacity: 1 }}
+                    transition={{ duration: 0.8 }}
+                    className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/3 bg-white/10 backdrop-blur-md rotate-12"
+                  />
+                </motion.div>
+
+                {/* Dashed decorative ring */}
                 <motion.div
+                  aria-hidden
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                  className="absolute -inset-2 sm:-inset-4 border border-dashed sm:border-2 border-primary-300 dark:border-primary-700 rounded-full opacity-30"
+                  transition={{ duration: 24, repeat: Infinity, ease: 'linear' }}
+                  className="pointer-events-none absolute -inset-3 sm:-inset-4 rounded-[36px] border border-dashed sm:border-2 border-primary-500/40 dark:border-primary-400/40"
                 />
               </motion.div>
             </div>
           </motion.div>
         </div>
 
-        {/* Scroll Indicator - Hidden on Mobile */}
+        {/* Scroll cue */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5 }}
-          className="hidden sm:flex absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          transition={{ delay: 1.2 }}
+          className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-            className="flex flex-col items-center gap-2 text-gray-400 dark:text-gray-500"
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+            className="flex flex-col items-center gap-2 text-light-text-tertiary dark:text-dark-text-tertiary"
           >
             <span className="text-sm font-medium">Scroll to explore</span>
             <FiArrowDown className="w-4 h-4" />

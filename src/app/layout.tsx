@@ -38,9 +38,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-white dark:bg-slate-950 text-gray-900 dark:text-gray-50 transition-colors duration-300 overflow-x-hidden antialiased">
         <ThemeProvider>
           <ParticleBackground />
-          <div className="relative flex flex-col min-h-screen bg-gradient-light dark:bg-gradient-dark transition-colors duration-300 prevent-layout-shift">
+          <div className="relative flex flex-col min-h-screen bg-gradient-light dark:bg-gradient-dark transition-colors duration-300">
             <Header />
-            <main className="relative z-10 flex-grow focus-visible:focus-visible">
+            <main className="relative z-10 flex-grow">
               {children}
             </main>
             <Footer />

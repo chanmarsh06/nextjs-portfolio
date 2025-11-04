@@ -1,110 +1,153 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import Container from '../Container';
-import * as SiIcons from 'react-icons/si';
+import {
+  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiRedux, SiMui, SiBootstrap,
+  SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiJsonwebtokens, SiJest, SiGit, SiFirebase, SiPostman, SiDocker
+} from 'react-icons/si';
+import { FaAws, FaGitAlt } from 'react-icons/fa';
 
-const skills = [
-  { name: 'React', icon: 'SiReact', color: '#61DAFB', level: 95 },
-  { name: 'Next.js', icon: 'SiNextdotjs', color: '#000000', level: 90 },
-  { name: 'TypeScript', icon: 'SiTypescript', color: '#3178C6', level: 85 },
-  { name: 'JavaScript', icon: 'SiJavascript', color: '#F7DF1E', level: 95 },
-  { name: 'Node.js', icon: 'SiNodedotjs', color: '#339933', level: 80 },
-  { name: 'MongoDB', icon: 'SiMongodb', color: '#47A248', level: 75 },
-  { name: 'Tailwind', icon: 'SiTailwindcss', color: '#06B6D4', level: 90 },
-  { name: 'Framer', icon: 'SiFramer', color: '#0055FF', level: 85 },
+
+// ✅ Better grouping structure
+const sections = [
+  {
+    title: "Frontend",
+    skills: [
+      { name: 'HTML5', level: 90, color: '#e34c26', icon: <SiHtml5 /> },
+      { name: 'CSS / SCSS', level: 85, color: '#1572b6', icon: <SiCss3 /> },
+      { name: 'JavaScript', level: 85, color: '#f7df1e', icon: <SiJavascript /> },
+      { name: 'TypeScript', level: 80, color: '#3178c6', icon: <SiTypescript /> },
+      { name: 'React.js', level: 90, color: '#61dafb', icon: <SiReact /> },
+      { name: 'Next.js', level: 85, color: '#000', icon: <SiNextdotjs /> },
+      { name: 'Redux', level: 80, color: '#764abc', icon: <SiRedux /> },
+      { name: 'Material UI', level: 85, color: '#007fff', icon: <SiMui /> },
+      { name: 'Bootstrap', level: 75, color: '#7952b3', icon: <SiBootstrap /> },
+    ],
+  },
+  {
+    title: "Backend / Database",
+    skills: [
+      { name: 'Node.js', level: 85, color: '#339933', icon: <SiNodedotjs /> },
+      { name: 'Express.js', level: 80, color: '#000', icon: <SiExpress /> },
+      { name: 'MongoDB', level: 80, color: '#47a248', icon: <SiMongodb /> },
+      { name: 'MySQL', level: 75, color: '#4479a1', icon: <SiMysql /> },
+      { name: 'JWT Auth', level: 80, color: '#ffca28', icon: <SiJsonwebtokens /> },
+      { name: 'Jest Testing', level: 70, color: '#99424f', icon: <SiJest /> },
+      { name: 'Git & GitHub', level: 85, color: '#f05032', icon: <SiGit /> },
+    ],
+  }
 ];
 
-export default function SkillsSection() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
 
+// 🔥 Enhanced Tools Section (premium badges)
+const tools = [
+  { name: 'React', color: '#61dafb', icon: <SiReact /> },
+  { name: 'Node.js', color: '#339933', icon: <SiNodedotjs /> },
+  { name: 'MongoDB', color: '#47a248', icon: <SiMongodb /> },
+  { name: 'Express.js', color: '#000', icon: <SiExpress /> },
+  { name: 'TypeScript', color: '#3178c6', icon: <SiTypescript /> },
+  { name: 'JavaScript', color: '#f7df1e', icon: <SiJavascript /> },
+  { name: 'Docker', color: '#2496ED', icon: <SiDocker /> },
+  { name: 'AWS', color: '#FF9900', icon: <FaAws /> },
+  { name: 'Firebase', color: '#FFCA28', icon: <SiFirebase /> },
+  { name: 'Git', color: '#F05032', icon: <FaGitAlt /> },
+  { name: 'Postman', color: '#FF6C37', icon: <SiPostman /> },
+];
+
+
+export default function Skills() {
   return (
-    <section id="skills" className="py-12 sm:py-16 lg:py-20">
-      <Container>
-        {/* Header - Responsive Typography */}
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
+    <section id="skills" className="py-24 relative overflow-hidden">
+
+      {/* BG blur accents */}
+      <div className="absolute -top-10 -right-10 w-60 h-60 bg-primary-500/20 blur-3xl rounded-full"></div>
+      <div className="absolute bottom-0 -left-20 w-72 h-72 bg-secondary-500/20 blur-3xl rounded-full"></div>
+
+      <div className="max-w-6xl mx-auto px-6">
+
+        {/* Section Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-8 sm:mb-12 lg:mb-16"
+          className="text-center text-4xl sm:text-5xl font-extrabold mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">
-            <span className="text-gray-900 dark:text-white">My </span>
-            <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-              Skills
-            </span>
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto px-4">
-            Technologies I use to bring ideas to life
-          </p>
+          <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-transparent bg-clip-text">
+            Skills & Technologiessss
+          </span>
+        </motion.h2>
+
+        {/* ✅ Skills Cards */}
+        <div className="grid md:grid-cols-2 gap-10">
+          {sections.map((block, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="rounded-3xl p-8 bg-white/80 dark:bg-gray-900/70 backdrop-blur-xl border border-white/10 shadow-xl"
+            >
+              <h3 className="text-2xl font-bold mb-6">{block.title}</h3>
+
+              <div className="space-y-6">
+                {block.skills.map((skill, index) => (
+                  <motion.div key={index} className="space-y-2">
+                    {/* Icon + Label */}
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2 font-semibold">
+                        <span className="text-xl" style={{ color: skill.color }}>
+                          {skill.icon}
+                        </span>
+                        {skill.name}
+                      </div>
+                      <span className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                        {skill.level}%
+                      </span>
+                    </div>
+
+                    {/* Animated Progress bar */}
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1 }}
+                      className="h-[6px] rounded-full"
+                      style={{ background: skill.color }}
+                    ></motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* ✅ Tools / Tech Badges */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16 p-8 rounded-3xl bg-white/80 dark:bg-gray-900/70 border border-white/10 shadow-xl backdrop-blur-xl"
+        >
+          <h3 className="text-xl font-bold mb-6">Technologies & Tools</h3>
+
+          <div className="flex flex-wrap gap-4">
+            {tools.map((tech, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.15, rotate: 2 }}
+                className="px-4 py-2 rounded-xl flex items-center gap-2 font-medium shadow-md bg-white dark:bg-gray-800 border"
+                style={{
+                  borderColor: `${tech.color}30`,
+                  color: tech.color,
+                }}
+              >
+                <span className="text-lg">{tech.icon}</span>
+                {tech.name}
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
-        {/* Skills Grid - Responsive Layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
-          {skills.map((skill, index) => {
-            const IconComponent = SiIcons[skill.icon as keyof typeof SiIcons];
-            
-            return (
-              <motion.div
-                key={skill.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                viewport={{ once: true }}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: `0 8px 25px ${skill.color}20`
-                }}
-                className="group relative p-3 sm:p-4 lg:p-6 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-xl sm:rounded-2xl border border-gray-200/20 dark:border-gray-700/20 hover:border-primary-300 dark:hover:border-primary-700 transition-all duration-300"
-              >
-                <div className="flex flex-col items-center space-y-2 sm:space-y-3 lg:space-y-4">
-                  {/* Icon Container - Responsive */}
-                  <div 
-                    className="p-2 sm:p-2.5 lg:p-3 rounded-lg sm:rounded-xl transition-all duration-300 group-hover:scale-110"
-                    style={{ backgroundColor: `${skill.color}15` }}
-                  >
-                    {IconComponent && (
-                      <IconComponent 
-                        className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 transition-colors duration-300"
-                        style={{ color: skill.color }}
-                      />
-                    )}
-                  </div>
-                  
-                  {/* Skill Info - Responsive Text */}
-                  <div className="text-center w-full">
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-1 sm:mb-2 text-xs sm:text-sm lg:text-base">
-                      {skill.name}
-                    </h3>
-                    
-                    {/* Progress Bar - Responsive */}
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-1.5 sm:h-2 mb-1">
-                      <motion.div
-                        className="h-1.5 sm:h-2 rounded-full"
-                        style={{ 
-                          background: `linear-gradient(90deg, ${skill.color}, ${skill.color}80)`
-                        }}
-                        initial={{ width: 0 }}
-                        animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
-                        transition={{ duration: 1, delay: index * 0.1 }}
-                      />
-                    </div>
-                    <span className="text-xs text-gray-500 dark:text-gray-400">
-                      {skill.level}%
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </Container>
+      </div>
     </section>
   );
 }
