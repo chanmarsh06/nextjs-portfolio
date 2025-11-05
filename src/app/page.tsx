@@ -7,6 +7,7 @@ import About from './about/page';
 import SkillsSection from '../components/sections/SkillsSection';
 import Services from './services/page';
 import Portfolio from './portfolio/page';
+import Achievements from './achievements/page';
 import Testimonials from './testimonials/page';
 import Qualification from './qualification/page';
 import Contact from './contact/page';
@@ -33,6 +34,10 @@ export default function RootPage() {
 
       <SectionWrapper id="portfolio" className="relative z-10 py-16 md:py-24 lg:py-32">
         <Portfolio />
+      </SectionWrapper>
+
+      <SectionWrapper id="achievements" className="relative z-10 py-16 md:py-24 lg:py-32">
+        <Achievements />
       </SectionWrapper>
 
       <SectionWrapper id="testimonials" className="relative z-10 py-16 md:py-24 lg:py-32">

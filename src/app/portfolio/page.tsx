@@ -6,57 +6,38 @@ import { useState } from 'react';
 import { HiExternalLink } from 'react-icons/hi';
 import { FiGithub } from 'react-icons/fi';
 import Container from '@/components/Container';
+import { FashionStore,FoodWebsite,Portfolios } from '@/assets';
 
 const projects = [
-  { 
-    title: 'E-Commerce Platform', 
-    image: 'https://via.placeholder.com/400x300/6366f1/ffffff?text=E-Commerce',
-    description: 'Full-stack e-commerce platform built with MERN stack',
-    tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    github: '#',
-    live: '#'
+  {
+    title: "Homemade Food Delivery Platform",
+    image: FoodWebsite,// Replace with your actual image
+    description:
+      "A platform that connects local home chefs with customers. Includes order tracking, category filters, and dynamic product management.",
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion", "MongoDB"],
+    github: "#",
+    live: "https://tasteof-home.netlify.app/", // replace URL
   },
-  { 
-    title: 'Task Management App', 
-    image: 'https://via.placeholder.com/400x300/ec4899/ffffff?text=Task+Manager',
-    description: 'Collaborative task management with real-time updates',
-    tech: ['Next.js', 'TypeScript', 'Prisma', 'Socket.io'],
-    github: '#',
-    live: '#'
+  {
+    title: "Saree / Fashion Store Website",
+    image: FashionStore, // Replace with your actual image
+    description:
+      "Modern e-Commerce storefront with responsive product listing, variant selection, and smooth animations for premium shopping experience.",
+    tech: ["Next.js", "Stripe", "Cloudinary", "Shadcn UI"],
+    github: "#",
+    live: "https://brindhacouture.netlify.app/", // replace URL
   },
-  { 
-    title: 'Weather Dashboard', 
-    image: 'https://via.placeholder.com/400x300/10b981/ffffff?text=Weather+App',
-    description: 'Beautiful weather dashboard with location-based forecasts',
-    tech: ['React', 'Tailwind', 'OpenWeather API'],
-    github: '#',
-    live: '#'
-  },
-  { 
-    title: 'Portfolio Website', 
-    image: 'https://via.placeholder.com/400x300/f59e0b/ffffff?text=Portfolio',
-    description: 'Responsive portfolio with smooth animations',
-    tech: ['Next.js', 'Framer Motion', 'Tailwind CSS'],
-    github: '#',
-    live: '#'
-  },
-  { 
-    title: 'Social Media App', 
-    image: 'https://via.placeholder.com/400x300/8b5cf6/ffffff?text=Social+App',
-    description: 'Social media platform with real-time messaging',
-    tech: ['React', 'Firebase', 'Material-UI'],
-    github: '#',
-    live: '#'
-  },
-  { 
-    title: 'Learning Platform', 
-    image: 'https://via.placeholder.com/400x300/06b6d4/ffffff?text=Learning+App',
-    description: 'Online learning platform with video streaming',
-    tech: ['Next.js', 'Supabase', 'Stripe'],
-    github: '#',
-    live: '#'
+  {
+    title: "Personal Portfolio Website",
+    image:Portfolios, // Replace with your actual image
+    description:
+      "My portfolio showcasing projects, skills, and achievements with rich animations and optimized performance.",
+    tech: ["Next.js", "Framer Motion", "TypeScript", "Tailwind CSS"],
+    github: "https://github.com/your-portfolio-repo",
+    live: "https://chan-portfolio-06.netlify.app/",
   },
 ];
+
 
 export default function Portfolio() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
