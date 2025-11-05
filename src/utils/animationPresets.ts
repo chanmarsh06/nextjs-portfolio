@@ -4,6 +4,7 @@
  */
 
 export const easeConfig = {
+  
   smooth: [0.25, 0.46, 0.45, 0.94],
   easeOut: [0.0, 0.0, 0.2, 1],
   easeIn: [0.4, 0.0, 1, 1],
