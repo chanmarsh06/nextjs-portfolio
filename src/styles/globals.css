@@ -26,7 +26,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background: transparent;
+  background: transparent !important;
   line-height: 1.6;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
@@ -244,6 +244,21 @@ h6 {
     min-height: 44px;
     min-width: 44px;
   }
+  
+  /* Improve text readability on mobile */
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* Optimize spacing for mobile */
+  .space-y-8 > * + * {
+    margin-top: 1.5rem;
+  }
+  
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
 }
 
 /* Mobile-first responsive utilities */
@@ -293,6 +308,17 @@ h6 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  
+  /* Optimize animations for mobile */
+  .animate-float,
+  .animate-blob {
+    animation-duration: 8s;
+  }
+  
+  /* Reduce blur effects on mobile */
+  [class*="blur-"] {
+    backdrop-filter: blur(8px);
   }
 }
 

@@ -1,153 +1,144 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Container from '@/components/Container';
+import { fadeInUp, staggerContainer, staggerItem, hoverLift } from '@/utils/animations';
 import {
-  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiRedux, SiMui, SiBootstrap,
-  SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiJsonwebtokens, SiJest, SiGit, SiFirebase, SiPostman, SiDocker
+  SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiNextdotjs, SiRedux, SiTailwindcss,
+  SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiGit, SiFirebase, SiDocker
 } from 'react-icons/si';
-import { FaAws, FaGitAlt } from 'react-icons/fa';
+import { FaAws } from 'react-icons/fa';
 
-
-// ✅ Better grouping structure
-const sections = [
+const skillSections = [
   {
     title: "Frontend",
     skills: [
-      { name: 'HTML5', level: 90, color: '#e34c26', icon: <SiHtml5 /> },
-      { name: 'CSS / SCSS', level: 85, color: '#1572b6', icon: <SiCss3 /> },
-      { name: 'JavaScript', level: 85, color: '#f7df1e', icon: <SiJavascript /> },
-      { name: 'TypeScript', level: 80, color: '#3178c6', icon: <SiTypescript /> },
       { name: 'React.js', level: 90, color: '#61dafb', icon: <SiReact /> },
       { name: 'Next.js', level: 85, color: '#000', icon: <SiNextdotjs /> },
-      { name: 'Redux', level: 80, color: '#764abc', icon: <SiRedux /> },
-      { name: 'Material UI', level: 85, color: '#007fff', icon: <SiMui /> },
-      { name: 'Bootstrap', level: 75, color: '#7952b3', icon: <SiBootstrap /> },
+      { name: 'TypeScript', level: 80, color: '#3178c6', icon: <SiTypescript /> },
+      { name: 'JavaScript', level: 85, color: '#f7df1e', icon: <SiJavascript /> },
+      { name: 'Tailwind CSS', level: 90, color: '#06b6d4', icon: <SiTailwindcss /> },
+      { name: 'HTML5', level: 95, color: '#e34c26', icon: <SiHtml5 /> },
+      { name: 'CSS3', level: 90, color: '#1572b6', icon: <SiCss3 /> },
+      { name: 'Redux', level: 75, color: '#764abc', icon: <SiRedux /> },
     ],
   },
   {
-    title: "Backend / Database",
+    title: "Backend & Tools",
     skills: [
       { name: 'Node.js', level: 85, color: '#339933', icon: <SiNodedotjs /> },
       { name: 'Express.js', level: 80, color: '#000', icon: <SiExpress /> },
       { name: 'MongoDB', level: 80, color: '#47a248', icon: <SiMongodb /> },
       { name: 'MySQL', level: 75, color: '#4479a1', icon: <SiMysql /> },
-      { name: 'JWT Auth', level: 80, color: '#ffca28', icon: <SiJsonwebtokens /> },
-      { name: 'Jest Testing', level: 70, color: '#99424f', icon: <SiJest /> },
-      { name: 'Git & GitHub', level: 85, color: '#f05032', icon: <SiGit /> },
+      { name: 'Git', level: 90, color: '#f05032', icon: <SiGit /> },
+      { name: 'Docker', level: 70, color: '#2496ED', icon: <SiDocker /> },
+      { name: 'AWS', level: 65, color: '#FF9900', icon: <FaAws /> },
+      { name: 'Firebase', level: 75, color: '#FFCA28', icon: <SiFirebase /> },
     ],
   }
 ];
 
-
-// 🔥 Enhanced Tools Section (premium badges)
-const tools = [
-  { name: 'React', color: '#61dafb', icon: <SiReact /> },
-  { name: 'Node.js', color: '#339933', icon: <SiNodedotjs /> },
-  { name: 'MongoDB', color: '#47a248', icon: <SiMongodb /> },
-  { name: 'Express.js', color: '#000', icon: <SiExpress /> },
-  { name: 'TypeScript', color: '#3178c6', icon: <SiTypescript /> },
-  { name: 'JavaScript', color: '#f7df1e', icon: <SiJavascript /> },
-  { name: 'Docker', color: '#2496ED', icon: <SiDocker /> },
-  { name: 'AWS', color: '#FF9900', icon: <FaAws /> },
-  { name: 'Firebase', color: '#FFCA28', icon: <SiFirebase /> },
-  { name: 'Git', color: '#F05032', icon: <FaGitAlt /> },
-  { name: 'Postman', color: '#FF6C37', icon: <SiPostman /> },
-];
-
-
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 relative overflow-hidden">
+    <section className="py-16 lg:py-20 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-primary-500/10 blur-3xl rounded-full" />
+      <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-secondary-500/10 blur-3xl rounded-full" />
 
-      {/* BG blur accents */}
-      <div className="absolute -top-10 -right-10 w-60 h-60 bg-primary-500/20 blur-3xl rounded-full"></div>
-      <div className="absolute bottom-0 -left-20 w-72 h-72 bg-secondary-500/20 blur-3xl rounded-full"></div>
-
-      <div className="max-w-6xl mx-auto px-6">
-
-        {/* Section Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center text-4xl sm:text-5xl font-extrabold mb-16"
+      <Container>
+        {/* Header */}
+        <motion.div
+          {...fadeInUp(0)}
+          className="text-center mb-12"
         >
-          <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-transparent bg-clip-text">
-            Skills & Technologiessss
-          </span>
-        </motion.h2>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-4">
+            <span className="text-gray-900 dark:text-white">Skills & </span>
+            <span className="bg-gradient-to-r from-primary-500 to-secondary-500 text-transparent bg-clip-text">
+              Technologies
+            </span>
+          </h2>
+          <p className="text-lg text-gray-600 dark:text-gray-300">
+            Technologies I work with
+          </p>
+        </motion.div>
 
-        {/* ✅ Skills Cards */}
-        <div className="grid md:grid-cols-2 gap-10">
-          {sections.map((block, i) => (
+        {/* Skills Grid */}
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-8"
+        >
+          {skillSections.map((section, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="rounded-3xl p-8 bg-white/80 dark:bg-gray-900/70 backdrop-blur-xl border border-white/10 shadow-xl"
+              variants={staggerItem}
+              className="p-8 rounded-3xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 shadow-xl"
             >
-              <h3 className="text-2xl font-bold mb-6">{block.title}</h3>
+              <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">{section.title}</h3>
 
               <div className="space-y-6">
-                {block.skills.map((skill, index) => (
-                  <motion.div key={index} className="space-y-2">
-                    {/* Icon + Label */}
+                {section.skills.map((skill, index) => (
+                  <div key={index} className="space-y-3">
                     <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-2 font-semibold">
+                      <div className="flex items-center gap-3">
                         <span className="text-xl" style={{ color: skill.color }}>
                           {skill.icon}
                         </span>
-                        {skill.name}
+                        <span className="font-medium text-gray-900 dark:text-white">{skill.name}</span>
                       </div>
-                      <span className="text-sm font-medium text-gray-500 dark:text-gray-300">
+                      <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                         {skill.level}%
                       </span>
                     </div>
 
-                    {/* Animated Progress bar */}
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1 }}
-                      className="h-[6px] rounded-full"
-                      style={{ background: skill.color }}
-                    ></motion.div>
-                  </motion.div>
+                    {/* Progress bar */}
+                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${skill.level}%` }}
+                        transition={{ duration: 1, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        className="h-2 rounded-full"
+                        style={{ backgroundColor: skill.color }}
+                      />
+                    </div>
+                  </div>
                 ))}
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* ✅ Tools / Tech Badges */}
+        {/* Tech Stack Overview */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 p-8 rounded-3xl bg-white/80 dark:bg-gray-900/70 border border-white/10 shadow-xl backdrop-blur-xl"
+          {...fadeInUp(0.4)}
+          className="mt-12 text-center"
         >
-          <h3 className="text-xl font-bold mb-6">Technologies & Tools</h3>
-
-          <div className="flex flex-wrap gap-4">
-            {tools.map((tech, i) => (
+          <h3 className="text-2xl font-bold mb-8 text-gray-900 dark:text-white">Tech Stack</h3>
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              { name: 'React', icon: <SiReact />, color: '#61dafb' },
+              { name: 'Next.js', icon: <SiNextdotjs />, color: '#000' },
+              { name: 'TypeScript', icon: <SiTypescript />, color: '#3178c6' },
+              { name: 'Node.js', icon: <SiNodedotjs />, color: '#339933' },
+              { name: 'MongoDB', icon: <SiMongodb />, color: '#47a248' },
+              { name: 'Tailwind', icon: <SiTailwindcss />, color: '#06b6d4' },
+            ].map((tech, i) => (
               <motion.div
                 key={i}
-                whileHover={{ scale: 1.15, rotate: 2 }}
-                className="px-4 py-2 rounded-xl flex items-center gap-2 font-medium shadow-md bg-white dark:bg-gray-800 border"
-                style={{
-                  borderColor: `${tech.color}30`,
-                  color: tech.color,
-                }}
+                {...hoverLift}
+                className="flex items-center gap-2 px-4 py-3 rounded-xl bg-white dark:bg-gray-800 shadow-md border border-gray-200 dark:border-gray-700"
+                style={{ color: tech.color }}
               >
-                <span className="text-lg">{tech.icon}</span>
-                {tech.name}
+                <span className="text-xl">{tech.icon}</span>
+                <span className="font-medium text-gray-900 dark:text-white">{tech.name}</span>
               </motion.div>
             ))}
           </div>
         </motion.div>
-
-      </div>
+      </Container>
     </section>
   );
 }

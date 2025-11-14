@@ -8,24 +8,17 @@ interface ContainerProps {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full';
   padding?: 'none' | 'tight' | 'normal' | 'loose';
-  variant?: 'default' | 'section' | 'compact';
 }
 
-/**
- * Global responsive container component
- * Maintains consistent max-width and padding across all pages
- * Ensures professional layout and spacing
- */
 export default function Container({ 
   children, 
   className = '', 
   size = 'xl',
   padding = 'normal',
-  variant = 'default',
 }: ContainerProps) {
   const sizeClasses = {
     sm: 'max-w-2xl',
-    md: 'max-w-3xl', 
+    md: 'max-w-4xl', 
     lg: 'max-w-5xl',
     xl: 'max-w-6xl',
     '2xl': 'max-w-7xl',
@@ -34,24 +27,17 @@ export default function Container({
 
   const paddingClasses = {
     none: 'px-0',
-    tight: 'px-3 sm:px-4 md:px-6',
-    normal: 'px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12',
-    loose: 'px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20',
-  } as const;
-
-  const variantClasses = {
-    default: '',
-    section: 'py-8 md:py-12 lg:py-16',
-    compact: 'py-4 md:py-6 lg:py-8',
+    tight: 'px-4 sm:px-6',
+    normal: 'px-4 sm:px-6 lg:px-8',
+    loose: 'px-6 sm:px-8 lg:px-12',
   } as const;
 
   return (
     <div 
       className={clsx(
         sizeClasses[size],
-        'mx-auto',
+        'mx-auto w-full',
         paddingClasses[padding],
-        variantClasses[variant],
         className
       )}
     >

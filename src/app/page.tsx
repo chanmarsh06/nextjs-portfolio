@@ -1,18 +1,17 @@
 'use client';
 
-
-
-import Home from './home/page';
-import About from './about/page';
-import SkillsSection from '../components/sections/SkillsSection';
-import Services from './services/page';
-import Portfolio from './portfolio/page';
-import Achievements from './achievements/page';
-import Testimonials from './testimonials/page';
-import Qualification from './qualification/page';
-import Contact from './contact/page';
+import dynamic from 'next/dynamic';
 import { SectionWrapper } from '../components/animations/index';
 
+const Home = dynamic(() => import('./home/page'));
+const About = dynamic(() => import('./about/page'));
+const SkillsSection = dynamic(() => import('../components/sections/SkillsSection'));
+const Services = dynamic(() => import('./services/page'));
+const Portfolio = dynamic(() => import('./portfolio/page'));
+const Achievements = dynamic(() => import('./achievements/page'));
+const Testimonials = dynamic(() => import('./testimonials/page'));
+const Qualification = dynamic(() => import('./qualification/page'));
+const Contact = dynamic(() => import('./contact/page'));
 
 export default function RootPage() {
   return (
@@ -28,27 +27,27 @@ export default function RootPage() {
         <SkillsSection />
       </SectionWrapper>
 
-      <SectionWrapper id="services" className="relative z-10 py-16 md:py-24 lg:py-32">
+      <SectionWrapper id="services" className="relative z-10">
         <Services />
       </SectionWrapper>
 
-      <SectionWrapper id="portfolio" className="relative z-10 py-16 md:py-24 lg:py-32">
+      <SectionWrapper id="portfolio" className="relative z-10">
         <Portfolio />
       </SectionWrapper>
 
-      <SectionWrapper id="achievements" className="relative z-10 py-16 md:py-24 lg:py-32">
+      <SectionWrapper id="achievements" className="relative z-10">
         <Achievements />
       </SectionWrapper>
 
-      <SectionWrapper id="testimonials" className="relative z-10 py-16 md:py-24 lg:py-32">
+      <SectionWrapper id="testimonials" className="relative z-10">
         <Testimonials />
       </SectionWrapper>
 
-      <SectionWrapper id="qualification" className="relative z-10 py-16 md:py-24 lg:py-32">
+      <SectionWrapper id="qualification" className="relative z-10">
         <Qualification />
       </SectionWrapper>
 
-      <SectionWrapper id="contact" className="relative z-10 py-16 md:py-24 lg:py-32">
+      <SectionWrapper id="contact" className="relative z-10">
         <Contact />
       </SectionWrapper>
     </div>
