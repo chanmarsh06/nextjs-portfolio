@@ -41,8 +41,8 @@ export default function Header() {
           {/* Logo - Responsive sizing */}
           <motion.div whileHover={{ scale: 1.05 }}>
             <Link 
-              href="#home" 
-              className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent"
+             href="#home" 
+             className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary-500 to-secondary-500 bg-clip-text text-transparent"
             >
               Chan.dev
             </Link>

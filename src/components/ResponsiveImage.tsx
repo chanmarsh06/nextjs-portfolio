@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Easing } from 'framer-motion';
 import { useState } from 'react';
 
 interface ResponsiveImageProps {
@@ -43,7 +43,7 @@ export default function ResponsiveImage({
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.3}}
         className="relative"
       >
         <Image {...imageProps} />
