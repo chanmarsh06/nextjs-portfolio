@@ -1,36 +1,14 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  reactStrictMode: true,
-
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "via.placeholder.com",
-      },
-    ],
+    unoptimized: true
   },
-
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true
   },
-
   eslint: {
-    ignoreDuringBuilds: true,
-  },
-
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.pdf$/,
-      type: "asset/resource",
-      generator: {
-        filename: "static/media/[name].[contenthash][ext]",
-      },
-    });
-
-    return config;
-  },
+    ignoreDuringBuilds: true
+  }
 };
 
 export default nextConfig;
