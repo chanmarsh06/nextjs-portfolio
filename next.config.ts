@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true
+    unoptimized: true,
+    loader: 'custom',
+    loaderFile: './imageLoader.js'
   },
   typescript: {
     ignoreBuildErrors: true
