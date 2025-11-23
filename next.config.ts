@@ -1,15 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    unoptimized: true,
-    loader: 'custom',
-    loaderFile: './imageLoader.js'
+    unoptimized: true
   },
   typescript: {
     ignoreBuildErrors: true
   },
   eslint: {
     ignoreDuringBuilds: true
+  },
+  experimental: {
+    esmExternals: 'loose'
   }
 };
 
