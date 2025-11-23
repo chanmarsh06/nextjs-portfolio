@@ -7,7 +7,7 @@ import { HiDownload } from 'react-icons/hi';
 import Container from '@/components/Container';
 import { fadeInUp, hoverScale, hoverLift } from '@/utils/animations';
 import profilePic from '@/assets/chan.png';
-import CV from '@/assets/Chandrasekaran_React_Resume.pdf';
+
 
 export default function About() {
   const infoData = [
@@ -96,7 +96,7 @@ export default function About() {
 
             {/* CTA Button */}
             <motion.a
-              href={CV}
+              href="/Chandrasekaran_React_Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download
